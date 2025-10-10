@@ -6,7 +6,7 @@ import { MintBurnOFTAdapter } from "@layerzerolabs/oft-evm/contracts/MintBurnOFT
 import { IMintableBurnable } from "@layerzerolabs/oft-evm/contracts/interfaces/IMintableBurnable.sol";
 
 /**
- * @title wXRPMintBurnOFTAdapter
+ * @title WXRPMintBurnOFTAdapter
  * @notice LayerZero OFT adapter for wXRP token enabling cross-chain transfers with mint/burn mechanics.
  */
 contract WXRPMintBurnOFTAdapter is MintBurnOFTAdapter {

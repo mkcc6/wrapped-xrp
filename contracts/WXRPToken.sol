@@ -53,7 +53,7 @@ contract WXRPToken is IWXRPToken, ERC20Upgradeable, AccessControlUpgradeable, Pa
 
     /**
      * @notice Adds an address to the blacklist.
-     * @dev Only callable by accounts with BLACKLISTER_ROLE. Address must not already be blacklisted.
+     * @dev Only callable by accounts with `BLACKLISTER_ROLE`. Address must not already be blacklisted.
      * @param _address Address to add to the blacklist
      */
     function addToBlacklist(address _address) public virtual onlyRole(BLACKLISTER_ROLE) notBlacklisted(_address) {
@@ -63,7 +63,7 @@ contract WXRPToken is IWXRPToken, ERC20Upgradeable, AccessControlUpgradeable, Pa
 
     /**
      * @notice Removes an address from the blacklist, restoring token operation capabilities.
-     * @dev Only callable by accounts with BLACKLISTER_ROLE. Address must currently be blacklisted.
+     * @dev Only callable by accounts with `BLACKLISTER_ROLE`. Address must currently be blacklisted.
      * @param _address Address to remove from the blacklist
      */
     function removeFromBlacklist(address _address) public virtual onlyRole(BLACKLISTER_ROLE) {
@@ -78,7 +78,7 @@ contract WXRPToken is IWXRPToken, ERC20Upgradeable, AccessControlUpgradeable, Pa
 
     /**
      * @notice Pauses all token transfers and burning.
-     * @dev Only callable by accounts with PAUSER_ROLE when contract is not already paused.
+     * @dev Only callable by accounts with `PAUSER_ROLE` when contract is not already paused.
      *      It does not pause minting.
      */
     function pause() public virtual onlyRole(PAUSER_ROLE) whenNotPaused {
@@ -87,7 +87,7 @@ contract WXRPToken is IWXRPToken, ERC20Upgradeable, AccessControlUpgradeable, Pa
 
     /**
      * @notice Unpauses the contract, resuming normal token operations.
-     * @dev Only callable by accounts with PAUSER_ROLE when contract is paused.
+     * @dev Only callable by accounts with `PAUSER_ROLE` when contract is paused.
      */
     function unpause() public virtual onlyRole(PAUSER_ROLE) whenPaused {
         _unpause();
