@@ -7,7 +7,7 @@
     "consts",
     "utils",
     "hardhat.config.ts",
-    "layerzero.config.ts"
+    "layerzero.testnet.config.ts"
   ],
   "compilerOptions": {
     "target": "es2020",
