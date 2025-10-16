@@ -1,8 +1,8 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
 import { DeployFunction } from 'hardhat-deploy/types'
 
-import { EndpointId } from '@layerzerolabs/lz-definitions'
 import { useBigBlock, useSmallBlock } from '@layerzerolabs/hyperliquid-composer'
+import { EndpointId } from '@layerzerolabs/lz-definitions'
 
 import { loadHreWallet } from '../utils/wallet'
 

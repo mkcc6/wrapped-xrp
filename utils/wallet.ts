@@ -1,6 +1,6 @@
 import { HardhatRuntimeEnvironment } from 'hardhat/types'
 
-export function loadHreWallet(hre: HardhatRuntimeEnvironment, index: number = 0) {
+export function loadHreWallet(hre: HardhatRuntimeEnvironment, index = 0) {
     const accounts = hre.network.config.accounts
     if (!accounts) throw new Error('Accounts are not defined in Hardhat config')
     if (Array.isArray(accounts) && accounts[index]) {

@@ -26,7 +26,7 @@ pnpm hardhat compile
 # It'll activate the account.
 
 # Ensure the account is activated.
-pnpm dlx @layerzerolabs/hyperliquid-composer is-account-activated -u $(cast wallet addr $PRIVATE_KEY) -n testnet
+pnpm exec oft-hyperliquid-evm is-account-activated -u $(cast wallet addr $PRIVATE_KEY) -n testnet
 
 # Deploy OFT contracts. Prompts will appear to confirm HyperEVM block size switching.
 pnpm hardhat lz:deploy --networks ethereum-testnet,hyperevm-testnet --tags WXRP --ci
@@ -41,9 +41,39 @@ pnpm hardhat lz:ownable:transfer-ownership --oapp-config layerzero.testnet.confi
 pnpm hardhat transfer-proxy-admin --network ethereum-testnet
 pnpm hardhat transfer-proxy-admin --network hyperevm-testnet
 
-# Transfer ERC20 deault admin role.
+# Transfer ERC20 default admin role.
 pnpm hardhat transfer-erc20-admin --network ethereum-testnet
 pnpm hardhat transfer-erc20-admin --network hyperevm-testnet
+```
+
+### Mainnet
+
+```bash
+# Compile contracts.
+pnpm hardhat compile
+
+# Send 0.01 USDC to deployer address on HyperCore through `app.hyperliquid.xyz`.
+# It'll activate the account.
+
+# Ensure the account is activated.
+pnpm exec oft-hyperliquid-evm is-account-activated -u $(cast wallet addr $PRIVATE_KEY) -n mainnet
+
+# Deploy OFT contracts. Prompts will appear to confirm HyperEVM block size switching.
+pnpm hardhat lz:deploy --networks ethereum,hyperevm --tags WXRP --ci
+
+# Wire OFT contracts.
+pnpm hardhat lz:oapp:wire --oapp-config layerzero.mainnet.config.ts
+
+# Transfer ownership.
+pnpm hardhat lz:ownable:transfer-ownership --oapp-config layerzero.mainnet.config.ts
+
+# Transfer proxy admin owner.
+pnpm hardhat transfer-proxy-admin --network ethereum
+pnpm hardhat transfer-proxy-admin --network hyperevm
+
+# Transfer ERC20 default admin role.
+pnpm hardhat transfer-erc20-admin --network ethereum
+pnpm hardhat transfer-erc20-admin --network hyperevm
 ```
 
 ## Caveats
