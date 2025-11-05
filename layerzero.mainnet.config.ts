@@ -14,6 +14,7 @@ import {
 export const CONTRACTS: OmniPointHardhat[] = [
     { eid: EndpointId.ETHEREUM_V2_MAINNET, contractName: 'WXRPMintBurnOFTAdapter' },
     { eid: EndpointId.HYPERLIQUID_V2_MAINNET, contractName: 'WXRPMintBurnOFTAdapter' },
+    { eid: EndpointId.OPTIMISM_V2_MAINNET, contractName: 'WXRPMintBurnOFTAdapter' },
 ]
 
 // Generate all possible connections.

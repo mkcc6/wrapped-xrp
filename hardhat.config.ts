@@ -59,7 +59,7 @@ const config: HardhatUserConfig = {
     networks: {
         ethereum: {
             eid: EndpointId.ETHEREUM_V2_MAINNET,
-            url: process.env.RPC_URL_ETHEREUM || 'https://eth-mainnet.gateway.tenderly.co',
+            url: process.env.RPC_URL_ETHEREUM || 'https://mainnet.gateway.tenderly.co',
             accounts,
         },
         hyperevm: {
@@ -67,9 +67,14 @@ const config: HardhatUserConfig = {
             url: process.env.RPC_URL_HYPEREVM || 'https://rpc.hyperliquid.xyz/evm',
             accounts,
         },
+        optimism: {
+            eid: EndpointId.OPTIMISM_V2_MAINNET,
+            url: process.env.RPC_URL_OPTIMISM || 'https://optimism-rpc.publicnode.com',
+            accounts,
+        },
         'ethereum-testnet': {
             eid: EndpointId.SEPOLIA_V2_TESTNET,
-            url: process.env.RPC_URL_ETHEREUM_TESTNET || 'https://eth-sepolia.gateway.tenderly.co',
+            url: process.env.RPC_URL_ETHEREUM_TESTNET || 'https://sepolia.gateway.tenderly.co',
             accounts,
         },
         'hyperevm-testnet': {
@@ -87,6 +92,7 @@ const config: HardhatUserConfig = {
         apiKey: {
             ethereum: process.env.ETHERSCAN_API_KEY || 'unset',
             hyperevm: process.env.ETHERSCAN_API_KEY || 'unset',
+            optimism: process.env.ETHERSCAN_API_KEY || 'unset',
         },
         customChains: [
             {
@@ -103,6 +109,14 @@ const config: HardhatUserConfig = {
                 urls: {
                     apiURL: 'https://api.etherscan.io/v2/api?chainid=999',
                     browserURL: 'https://hyperevmscan.io/',
+                },
+            },
+            {
+                network: 'optimism',
+                chainId: 10,
+                urls: {
+                    apiURL: 'https://api.etherscan.io/v2/api?chainid=10',
+                    browserURL: 'https://optimistic.etherscan.io/',
                 },
             },
         ],

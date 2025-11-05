@@ -35,6 +35,7 @@ remappings = [
 [rpc_endpoints]
 ethereum = "${RPC_URL_ETHEREUM}"
 hyperevm = "${RPC_URL_HYPEREVM}"
+optimism = "${RPC_URL_OPTIMISM}"
 ethereum_testnet = "${RPC_URL_ETHEREUM_TESTNET}"
 hyperevm_testnet = "${RPC_URL_HYPEREVM_TESTNET}"
 

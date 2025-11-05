@@ -6,12 +6,7 @@ import { getOwnerAddress as getMainnetOwnerAddress } from '../consts/mainnet'
 import { getOwnerAddress as getTestnetOwnerAddress } from '../consts/testnet'
 import { promptForConfirmationOrExit } from '../utils/prompts'
 
-const eidToContractName: Partial<Record<EndpointId, string>> = {
-    [EndpointId.ETHEREUM_V2_MAINNET]: 'WXRPToken',
-    [EndpointId.HYPERLIQUID_V2_MAINNET]: 'WXRPToken',
-    [EndpointId.SEPOLIA_V2_TESTNET]: 'WXRPToken',
-    [EndpointId.HYPERLIQUID_V2_TESTNET]: 'WXRPToken',
-}
+const contractName = 'WXRPToken'
 
 task('transfer-erc20-admin', 'Transfer ERC20 default admin role to multisig address').setAction(async (args, hre) => {
     if (!hre.network.config.eid) throw new Error('Network EID not configured')
@@ -22,9 +17,6 @@ task('transfer-erc20-admin', 'Transfer ERC20 default admin role to multisig addr
 
     const signer = (await hre.ethers.getSigners())[0]
     const signerAddress = await signer.getAddress()
-
-    const contractName = eidToContractName[hre.network.config.eid]
-    if (!contractName) throw new Error(`No contract name mapped for EID ${hre.network.config.eid}`)
 
     const intendedOwnerAddressRaw = isTestnet
         ? getTestnetOwnerAddress(hre.network.config.eid)
